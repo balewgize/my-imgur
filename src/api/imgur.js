@@ -1,6 +1,7 @@
+import axios from "axios";
 import qs from "qs";
 
-const CLIENT_ID = "5dbfaa9b405b7f8";
+const CLIENT_ID = "b34fabaaa3ee3b1";
 const ROOT_URL = "https://api.imgur.com";
 
 export default {
@@ -13,5 +14,25 @@ export default {
     window.location = `${ROOT_URL}/oauth2/authorize?${qs.stringify(
       queryString
     )}`;
+  },
+  fetchImages(token) {
+    return axios.get(`${ROOT_URL}/3/account/me/images`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
+  uploadImages(images, token) {
+    const promises = Array.from(images).map((image) => {
+      const formData = new FormData();
+      formData.append("image", image);
+
+      return axios.post(`${ROOT_URL}/3/upload/`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    });
+    return Promise.all(promises);
   },
 };

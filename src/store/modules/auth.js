@@ -16,8 +16,8 @@ const actions = {
     commit("setToken", null);
     window.localStorage.removeItem('imgur_token');
   },
-  finalizeLogin: ({ commit }) => {
-    const query = qs.parse(window.location.hash.replace("#", ""));
+  finalizeLogin: ({ commit }, hash) => {
+    const query = qs.parse(hash.replace("#", ""));
     commit('setToken', query.access_token);
     window.localStorage.setItem('imgur_token', query.access_token);
     // redirect to home page

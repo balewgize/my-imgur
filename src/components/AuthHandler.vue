@@ -9,7 +9,7 @@ export default {
     name: 'AuthHandler',
     methods: mapActions(['finalizeLogin']),
     created() {
-        this.finalizeLogin();
+        this.finalizeLogin(window.location.hash);
     }
 }
 </script>
