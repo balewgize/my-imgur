@@ -1,9 +1,9 @@
 <template>
-  <div v-if="isLoggedIn" class="image-container">
-    <img v-for="image in allImages" :key="image.id" :src="image.link" />
-  </div>
-  <div v-else>
-    Login to your account to get started!
+  <div>
+    <div v-if="isLoggedIn" class="image-container">
+      <img v-for="image in allImages" :key="image.id" :src="image.link" />
+    </div>
+    <h2 v-else>Login to your account to get started!</h2>
   </div>
 </template>
 

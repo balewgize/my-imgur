@@ -3,7 +3,7 @@
     <router-link to="/" class="item"> ImageUpload </router-link>
     <div class="right menu">
       <div v-if="isLoggedIn" class="actions">
-        <router-link to="/" class="ui active item"> Gallery </router-link>
+        <router-link to="/" class="ui item"> Gallery </router-link>
         <router-link to="/upload" class="ui item"> Upload </router-link>
         <a class="ui item" @click="logout"> Logout </a>
       </div>
